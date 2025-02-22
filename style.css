@@ -12,22 +12,92 @@
   --color-gray-500: #C0C4CE;
   --color-gray-600: #E2E4E9;
 
-  --padding-xl: 0.75rem;
+  --text-title-lg: 3.5rem;
+  --text-title-md: 1.5rem;
+  --text-title-sm: 1rem;
+
+  --text-subtitle: 1.25rem;
+
+  --text-md: 1rem;
+  --text-sm: 0.875rem;
+
+  --rounded: 999px;
+}
+
+@keyframes arrow-down-to-up {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(16px);
+  }
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: 'border-box';
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Asap", serif;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-family: "Inconsolata", serif;
+  font-weight: 400;
+  font-size: var(--text-subtitle);
+}
+
+.rose-highlight {
+  color: var(--color-rose)
+}
+
+.purple-highlight {
+  color: var(--color-purple)
+}
+
+.headline {
+  font-size: var(--text-title-lg);
+}
+
+.slogan {
+  font-size: var(--text-subtitle);
+}
+
+.info-titles {
+  margin-top: 8px;
+  font-size: var(--text-title-md);
+  color: var(--color-gray-600);
+}
+
 body {
-  padding: 10rem 7.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Maven Pro", serif;
+  font-weight: 400;
+
+  background-image: url('/public/background_intro.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+button,
+input,
+a {
+  font-family: "Maven Pro", serif;
+  font-weight: 400;
 }
 
 html {
@@ -36,17 +106,46 @@ html {
 }
 
 header {
+  padding: 12rem 7.5rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-span.image-profile {
-  margin-bottom: 3.5rem;
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: url('/public/background_contacts.png');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-div.info-section {
+span.image-profile {
+  position: relative;
+  margin-bottom: 3.5rem;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--color-rose);
+
+  border-radius: var(--rounded);
+  padding: 4px;
+}
+
+span.image-profile>.badge {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+}
+
+header>div.info-section {
+  width: 680px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,12 +153,18 @@ div.info-section {
   gap: 1.25rem;
 }
 
+p.information {
+  text-align: center;
+  color: var(--color-gray-400);
+}
+
 div.list-techs {
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   /* Padrão do flex-direction é row, nem precisaria declarar */
-  justify-content: space-around;
+  gap: 1rem;
   margin-top: 5rem;
 }
 
@@ -68,11 +173,18 @@ span.techs {
   border-radius: 999px;
   padding: 0px 1rem;
   background-color: var(--color-gray-300);
+  border: 2px solid transparent;
   display: flex;
   flex-direction: row;
   justify-items: start;
   align-items: center;
   gap: 0.5rem;
+  cursor: default;
+}
+
+span.techs:hover {
+  border: 2px solid var(--color-gray-400);
+  transition: border 200ms;
 }
 
 span.techs img {
@@ -81,9 +193,166 @@ span.techs img {
 }
 
 div.arrow-down {
+  padding: 0px 7.5rem;
   margin: 6rem 0px;
 }
 
 div.arrow-down img {
   color: var(--color-gray-400);
+
+  animation: arrow-down-to-up 1500ms infinite ease-in-out;
 }
+
+div.project-cards {
+  padding: 0px 7.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: 9rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+div.project-card {
+  width: 320px;
+  height: 280px;
+  padding: 0.75rem;
+  border: 1.5px solid transparent;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+
+  background-color: var(--color-gray-300);
+  border-radius: 12px;
+}
+
+div.project-card:hover {
+  border: 1.5px solid var(--color-gray-400);
+  transition: border 200ms;
+}
+
+div.project-card .footer,
+div.service-card .footer {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 4px;
+  gap: 8px;
+}
+
+div.project-card .footer>h5,
+div.service-card .footer>h5 {
+  font-size: var(--text-title-sm);
+  color: var(--color-gray-600);
+}
+
+div.project-card .footer>p,
+div.service-card .footer>p {
+  font-size: var(--text-sm);
+  color: var(--color-gray-500)
+}
+
+div.services-box {
+  width: 100%;
+  padding: 5.5rem 7.5rem;
+  background-color: var(--color-gray-100);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.service-cards {
+  margin-top: 3.5rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+}
+
+div.service-cards .service-card {
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid var(--color-gray-200);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+div.service-cards .service-card img {
+  width: 48px;
+  height: 48px;
+}
+
+footer {
+  padding: 8rem 7.5rem 4.5rem 7.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description-title {
+  margin-top: 8px;
+  font-size: var(--text-md);
+  color: var(--color-gray-500);
+}
+
+div.social-buttons {
+  width: 320px;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+div.social-buttons a {
+  width: 100%;
+  text-decoration: none;
+}
+
+div.social-buttons button {
+  width: 100%;
+  height: 68px;
+  padding: 20px;
+  background-color: var(--color-gray-300);
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+div.social-buttons button:hover {
+  border: 1.5px solid var(--color-blue);
+  transition: border 200ms;
+}
+
+div.social-buttons button .arrow-up {
+  width: 20px;
+  height: 20px;
+}
+
+div.social-buttons button .social {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-gray-500);
+  font-weight: 500;
+}
+
+/* 
+.background-image {
+  width: 100%;
+  height: 500px;
+  background-image: url('/public/background_intro.png');
+} */
